@@ -17,9 +17,12 @@ class ArxivResponse(BaseModel):
 async def get_papers(
     keyword: List[str] = Query(["LLM", "GPT", "LFM", "LLMM"]),
     max_results: int = 10,
-    exclude_ids: Optional[List[str]] = Query(None)
+    exclude_ids: Optional[str] = ""
 ):
     query = " OR ".join([f"ti:\"{k}\"" for k in keyword])
+
+    exclude_id_list = exclude_ids.split("_") if exclude_ids else []
+
     search = arxiv.Search(
         query=query,
         max_results=max_results,
@@ -29,7 +32,7 @@ async def get_papers(
 
     results = []
     for result in search.results():
-        if exclude_ids and result.entry_id in exclude_ids:
+        if exclude_id_list and result.entry_id in exclude_id_list:
             continue
         submitted_jst = result.published.astimezone(pytz.timezone('Asia/Tokyo'))
         submitted_formatted = submitted_jst.strftime('%Y年%m月%d日 %H時%M分%S秒')
