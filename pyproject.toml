@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "retrieve-research-paper"
+version = "0.1.0"
+description = ""
+authors = ["h-k-nyosu <kuro.h1020@gmail.com>"]
+readme = "README.md"
+packages = [{include = "retrieve_research_paper"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+arxiv = "^1.4.7"
+fastapi = "^0.95.1"
+uvicorn = "^0.21.1"
+pytz = "^2023.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
