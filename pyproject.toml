@@ -12,6 +12,12 @@ arxiv = "^1.4.7"
 fastapi = "^0.95.1"
 uvicorn = "^0.21.1"
 pytz = "^2023.3"
+asyncio = "^3.4.3"
+openai = "^0.27.4"
+slack-sdk = {extras = ["aiohttp"], version = "^3.21.2"}
+slack-bolt = {extras = ["aiohttp"], version = "^1.17.2"}
+APScheduler = "^3.10.1"
+python-dotenv = "^1.0.0"
 
 
 [build-system]
