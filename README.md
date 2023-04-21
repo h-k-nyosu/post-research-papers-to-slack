@@ -28,6 +28,10 @@ arXiv から特定のキーワード、特定の著者の論文を検索し、�
 
 Slack 投稿の下部に ChatPDF の URL と、論文 PDF の URL を載せています。この論文 PDF の URL をコピーして、ChatPDF の Find a URL に貼り付けるとすぐ会話ができるような体験となっています。
 
+
+https://user-images.githubusercontent.com/100386872/233746868-d60ce8c9-e7de-4852-833b-e37c2525bc75.mov
+
+
 ### 2. Readable を使って PDF 翻訳をして読む
 
 ステップ 1 が完了した頃には、論文の全体像や詳細なども少し掴めてきているはずです。このタイミングで [Readble の Chrome 拡張機能](https://chrome.google.com/webstore/detail/readable/pmhcplemclcflofgnjfhoilpkclnjnfh?hl=ja)を使って PDF を翻訳し、実際の原文を読み進めていきます。この [Readble](https://readable.jp/) は PDF のフォーマットを保った状態で翻訳してくれる神ツールです。使わない手はありません。
