@@ -29,13 +29,6 @@ arXiv から特定のキーワード、特定の著者の論文を検索し、�
 Slack 投稿の下部に ChatPDF の URL と、論文 PDF の URL を載せています。この論文 PDF の URL をコピーして、ChatPDF の Find a URL に貼り付けるとすぐ会話ができるような体験となっています。
 
 
-https://user-images.githubusercontent.com/100386872/233746868-d60ce8c9-e7de-4852-833b-e37c2525bc75.mov
-
-
-
-https://user-images.githubusercontent.com/100386872/233747639-19aa166d-1401-47b6-8785-8e31c553e0e3.mov
-
-
 
 
 ### 2. Readable を使って PDF 翻訳をして読む
