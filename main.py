@@ -189,7 +189,7 @@ def main():
 
 
 scheduler = AsyncIOScheduler(timezone="Asia/Tokyo")
-scheduler.add_job(main, IntervalTrigger(hours=1))
+scheduler.add_job(main, IntervalTrigger(minutes=1))
 scheduler.start()
 
 
