@@ -20,7 +20,7 @@ arXiv から特定のキーワード、特定の著者の論文を検索し、�
 
 ### 1. ChatPDF を使った対話形式で疑問を解消していく
 
-ChatPDF は論文の PDF を読み込ませると、その論文内容に基づいて会話ができるサービスです。
+[ChatPDF](https://www.chatpdf.com/) は論文の PDF を読み込ませると、その論文内容に基づいて会話ができるサービスです。
 
 論文に書いてないことは、書いてないとある程度明記した上で解答をしてくれるので、比較的 hallucination のリスクは低いのかなと思っています（完全ではないと思いますが）。
 
@@ -30,4 +30,4 @@ Slack 投稿の下部に ChatPDF の URL と、論文 PDF の URL を載せて�
 
 ### 2. Readable を使って PDF 翻訳をして読む
 
-ステップ 1 が完了した頃には、論文の全体像や詳細なども少し掴めてきているはずです。このタイミングで Readble の Chrome 拡張機能を
+ステップ 1 が完了した頃には、論文の全体像や詳細なども少し掴めてきているはずです。このタイミングで [Readble の Chrome 拡張機能](https://chrome.google.com/webstore/detail/readable/pmhcplemclcflofgnjfhoilpkclnjnfh?hl=ja)を使って PDF を翻訳し、実際の原文を読み進めていきます。この [Readble](https://readable.jp/) は PDF のフォーマットを保った状態で翻訳してくれる神ツールです。使わない手はありません。
