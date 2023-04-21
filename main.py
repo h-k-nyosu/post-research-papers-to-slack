@@ -1,6 +1,7 @@
 import os
 import arxiv
 import pytz
+import time
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List
@@ -29,6 +30,20 @@ SLACK_CHANNEL = os.environ["SLACK_CHANNEL"]
 openai.api_key = os.environ["OPENAI_API_KEY"]
 
 app = FastAPI()
+
+
+def retry_on_error(func, retries=3, delay=5):
+    def wrapper(*args, **kwargs):
+        for _ in range(retries):
+            try:
+                return func(*args, **kwargs)
+            except openai.error.RateLimitError as e:
+                logger.warning(f"RateLimitError: {e}, Retrying...")
+                time.sleep(delay)
+        logger.error("Exceeded maximum retries.")
+        return None
+
+    return wrapper
 
 
 def init_database():
@@ -114,13 +129,7 @@ def get_papers(
 client = WebClient(token=SLACK_API_TOKEN)
 
 
-def post_to_slack(text):
-    try:
-        response = client.chat_postMessage(channel=SLACK_CHANNEL, text=text)
-    except SlackApiError as e:
-        logger.error(f"Error posting to Slack: {e}")
-
-
+@retry_on_error
 def fetch_interesting_points(result):
     response = openai.ChatCompletion.create(
         model="gpt-4",
@@ -137,6 +146,7 @@ def fetch_interesting_points(result):
     return res_interesting
 
 
+@retry_on_error
 def fetch_summary(result):
     response = openai.ChatCompletion.create(
         model="gpt-4",
@@ -153,6 +163,19 @@ def fetch_summary(result):
     return summary
 
 
+def post_to_slack(text):
+    try:
+        response = client.chat_postMessage(channel=SLACK_CHANNEL, text=text)
+    except SlackApiError as e:
+        logger.error(f"Error posting to Slack: {e}")
+
+
+@app.get("/")
+def health_check():
+    return {"status": "OK"}
+
+
+@app.get("/papers/slack_post")
 def main():
     paper = get_papers()
     if not paper:
@@ -166,14 +189,14 @@ def main():
     logger.info(f"Posted a paper: {paper.title}")
 
 
-scheduler = AsyncIOScheduler(timezone="Asia/Tokyo")
-scheduler.add_job(main, IntervalTrigger(minutes=5))
-scheduler.start()
-
-
 @app.on_event("shutdown")
 def shutdown_event():
     scheduler.shutdown()
+
+
+scheduler = AsyncIOScheduler(timezone="Asia/Tokyo")
+scheduler.add_job(main, IntervalTrigger(minutes=5))
+scheduler.start()
 
 
 if __name__ == "__main__":
