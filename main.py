@@ -175,7 +175,6 @@ def health_check():
     return {"status": "OK"}
 
 
-@app.get("/papers/slack_post")
 def main():
     paper = get_papers()
     if not paper:
@@ -189,17 +188,17 @@ def main():
     logger.info(f"Posted a paper: {paper.title}")
 
 
+scheduler = AsyncIOScheduler(timezone="Asia/Tokyo")
+scheduler.add_job(main, IntervalTrigger(minutes=1))
+scheduler.start()
+
+
 @app.on_event("shutdown")
 def shutdown_event():
     scheduler.shutdown()
 
 
-scheduler = AsyncIOScheduler(timezone="Asia/Tokyo")
-scheduler.add_job(main, IntervalTrigger(minutes=5))
-scheduler.start()
-
-
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
