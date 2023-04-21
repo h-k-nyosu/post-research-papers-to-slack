@@ -88,7 +88,7 @@ class ArxivResponse(BaseModel):
 
 
 def get_papers(
-    keyword: List[str] = ["LLM", "GPT", "LFM", "LLMM"], max_results: int = 10
+    keyword: List[str] = ["LLM", "GPT", "LFM", "LLMM"], max_results: int = 20
 ):
     query = " OR ".join([f'ti:"{k}"' for k in keyword])
 
@@ -189,7 +189,7 @@ def main():
 
 
 scheduler = AsyncIOScheduler(timezone="Asia/Tokyo")
-scheduler.add_job(main, IntervalTrigger(minutes=1))
+scheduler.add_job(main, IntervalTrigger(hours=1))
 scheduler.start()
 
 
@@ -201,4 +201,4 @@ def shutdown_event():
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
