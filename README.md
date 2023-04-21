@@ -28,8 +28,6 @@ ChatPDF は論文の PDF を読み込ませると、その論文内容に基づ�
 
 Slack 投稿の下部に ChatPDF の URL と、論文 PDF の URL を載せています。この論文 PDF の URL をコピーして、ChatPDF の Find a URL に貼り付けるとすぐ会話ができるような体験となっています。
 
-<img src="./static/usecase.gif">
-
 ### 2. Readable を使って PDF 翻訳をして読む
 
 ステップ 1 が完了した頃には、論文の全体像や詳細なども少し掴めてきているはずです。このタイミングで Readble の Chrome 拡張機能を
