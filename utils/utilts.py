@@ -5,7 +5,7 @@ import time
 import logging
 from pydantic import BaseModel
 from typing import List
-from config import OPENAI_API_KEY
+from config import OPENAI_API_KEY, SEARCH_KEYWORDS, SEARCH_AUTHORS
 
 logger = logging.getLogger(__name__)
 
@@ -67,9 +67,19 @@ def fetch_summary(result):
 
 
 def get_papers(
-    db, keyword: List[str] = ["LLM", "GPT", "LFM", "LLMM"], max_results: int = 20
+    db,
+    keyword: List[str] = SEARCH_KEYWORDS,
+    authors: List[str] = SEARCH_AUTHORS,
+    max_results: int = 20,
 ):
-    query = " OR ".join([f'ti:"{k}"' for k in keyword])
+    title_query = " OR ".join([f'ti:"{k}"' for k in keyword])
+    author_query = ""
+
+    if authors:
+        author_query = " OR ".join([f'au:"{a}"' for a in authors])
+        query = f"({title_query}) OR ({author_query})"
+    else:
+        query = title_query
     exclude_ids = db.get_excluded_papers()
 
     search = arxiv.Search(
