@@ -10,9 +10,9 @@ arXiv から特定のキーワード、特定の著者の論文を検索し、�
 
 これだけでは論文の内容を把握することは難しいですが、ざっくりどのようなテーマなのかを把握したり、読もうかなと興味を持てるようにするということに焦点を当てています。
 
-<img src="./static/bot_1.png">
+<img src="./static/bot_1.png" style="width:80%">
 
-<img src="./static/bot_2.png">
+<img src="./static/bot_2.png" style="width:80%">
 
 ## 論文を読む体験の向上
 
@@ -28,7 +28,8 @@ arXiv から特定のキーワード、特定の著者の論文を検索し、�
 
 Slack 投稿の下部に ChatPDF の URL と、論文 PDF の URL を載せています。この論文 PDF の URL をコピーして、ChatPDF の Find a URL に貼り付けるとすぐ会話ができるような体験となっています。
 
-![output](https://user-images.githubusercontent.com/100386872/233750313-695ad1c0-cba3-412a-9c27-1dbb6fb1c817.gif)
+![output](https://user-images.githubusercontent.com/100386872/233752104-d2433b95-db50-46c4-99ee-58ce73a47303.gif)
+
 
 
 
