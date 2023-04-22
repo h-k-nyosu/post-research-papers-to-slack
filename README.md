@@ -35,3 +35,6 @@ Slack 投稿の下部に ChatPDF の URL と、論文 PDF の URL を載せて�
 ### 2. Readable を使って PDF 翻訳をして読む
 
 ステップ 1 が完了した頃には、論文の全体像や詳細なども少し掴めてきているはずです。このタイミングで [Readble の Chrome 拡張機能](https://chrome.google.com/webstore/detail/readable/pmhcplemclcflofgnjfhoilpkclnjnfh?hl=ja)を使って PDF を翻訳し、実際の原文を読み進めていきます。この [Readble](https://readable.jp/) は PDF のフォーマットを保った状態で翻訳してくれる神ツールです。使わない手はありません。
+
+![output](https://user-images.githubusercontent.com/100386872/233751901-630cf40b-c9be-4f44-9fb8-33d5ffa74c9b.gif)
+
