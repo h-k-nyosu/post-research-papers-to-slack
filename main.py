@@ -46,20 +46,20 @@ def main():
     summary = fetch_summary(paper)
     interesting_points = fetch_interesting_points(paper)
     text = f"""
-    *タイトル: {paper.title}*\n\n
-    *概要*\n{summary}\n\n
-    *リンク*\n{paper.url}\n\n
-    *提出日*\n{paper.submitted}\n\n
-    *以下、面白いポイント*\n{interesting_points}\n\n
-    ChatPDFで読む: https://www.chatpdf.com/ \n\n
-    論文を読む: {paper.url}.pdf
+*タイトル: {paper.title}*\n\n
+*概要*\n{summary}\n\n
+*リンク*\n{paper.url}\n\n
+*提出日*\n{paper.submitted}\n\n
+*以下、面白いポイント*\n{interesting_points}\n\n
+ChatPDFで読む: https://www.chatpdf.com/ \n\n
+論文を読む: {paper.url}.pdf
     """
     post_to_slack(text)
     logger.info(f"Posted a paper: {paper.title}")
 
 
 scheduler = AsyncIOScheduler(timezone="Asia/Tokyo")
-scheduler.add_job(main, IntervalTrigger(minutes=10))
+scheduler.add_job(main, IntervalTrigger(hours=1))
 scheduler.start()
 
 
@@ -71,4 +71,4 @@ def shutdown_event():
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000)
