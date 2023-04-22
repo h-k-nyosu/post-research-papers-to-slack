@@ -4,7 +4,6 @@ from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.interval import IntervalTrigger
-from dotenv import load_dotenv
 import logging
 from database.database import Database
 from config import SLACK_API_TOKEN, SLACK_CHANNEL, DATABASE_NAME
@@ -18,7 +17,6 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
-load_dotenv()
 
 app = FastAPI()
 
