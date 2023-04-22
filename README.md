@@ -65,7 +65,7 @@ pip install -r requirements.txt
 
 ### ローカル環境での動作確認
 
-まずは.env.example のファイルをコピーして `.env` ファイルを作成して下さい。ここに SLACK BOT TOKEN、投稿したいチャンネルのチャンネル ID（SLACK_CHANNEL）、OPENAI_API_KEY を入力します。合わせてどのキーワードで論文を検索した以下についても設定できます。
+まずは.env.example のファイルをコピーして `.env` ファイルを作成して下さい。ここに SLACK BOT TOKEN、投稿したいチャンネルのチャンネル ID（SLACK_CHANNEL）、OPENAI_API_KEY を入力します。合わせてどのキーワードで論文を検索したいかについても設定できます。
 
 次に、Railway CLI を使って、ローカル環境で実際に動かします。以下のコマンドを実行すると確認できます。
 
