@@ -59,7 +59,7 @@ ChatPDFで読む: https://www.chatpdf.com/ \n\n
 
 
 scheduler = AsyncIOScheduler(timezone="Asia/Tokyo")
-scheduler.add_job(main, IntervalTrigger(hours=1))
+scheduler.add_job(main, IntervalTrigger(hours=3))
 scheduler.start()
 
 
